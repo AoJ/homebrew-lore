@@ -44,7 +44,7 @@ cask "lore" do
   version "1.0.7"
   sha256 "bde020c33bac6c1196518b964f37dfc293ad1d7b53544f4e7ce7d5b6c9baacf0"
 
-  url "https://api.github.com/repos/AoJ/lore/releases/assets/RA_kwDOSiwzvM4a5eM1",
+  url "https://api.github.com/repos/AoJ/lore/releases/assets/451273525",
       using: GitHubPrivateLoreDownloadStrategy
   name "Lore"
   desc "Personal knowledge management desktop app"
