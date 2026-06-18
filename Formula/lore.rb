@@ -7,18 +7,21 @@
 require "download_strategy"
 
 class Lore < Formula
-  desc "Personal knowledge management tool (headless: lore, lore-serve, lore-worker)"
+  desc "Personal knowledge management tool (CLI + macOS desktop app)"
   homepage "https://github.com/AoJ/lore"
-  version "1.0.5"
+  version "1.0.6"
   license "MIT"
 
   # Private release assets — Homebrew's built-in strategy authenticates with
-  # HOMEBREW_GITHUB_API_TOKEN (must have read access to AoJ/lore).
+  # HOMEBREW_GITHUB_API_TOKEN (must have read access to AoJ/lore). The macOS
+  # tarball also carries Lore.app; installing the GUI via the formula (not a
+  # cask) keeps it un-quarantined, so the ad-hoc-signed app launches without the
+  # Gatekeeper "could not verify" block.
   on_macos do
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-apple-darwin.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ab4e055f4a61d3acfe8893bcdb8e218a3db832c7e8c5cb3d2793ef65aec45f64"
+      sha256 "6d304fd60c5816ba56f9484d3d85a5defe71e3275da94eee3175ec76826f81d2"
     end
   end
 
@@ -26,21 +29,22 @@ class Lore < Formula
     on_intel do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-x86_64-unknown-linux-gnu.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "4b5d4760e4f8d268d5f31fdbf2261c41c14b87966263013e444482490a2fab70"
+      sha256 "e107283d495513f1ef91509ff3e8390101e90e8b59fade58a503c07c5a671057"
     end
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-unknown-linux-gnu.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "1f87f1cec4bffc5dde4da4df67bea2752af8597559a842fa322e397c3008d937"
+      sha256 "571d72b6a8ef335b5ac2bf7bbf35d5cb67f546b832fad4a6c35501ca206d572f"
     end
   end
 
   def install
     bin.install "lore", "lore-serve", "lore-worker"
+    prefix.install "Lore.app" if OS.mac?
   end
 
   def caveats
-    <<~EOS
+    s = <<~EOS
       Set HOMEBREW_GITHUB_API_TOKEN to a token with read access to AoJ/lore
       before install/upgrade:
         export HOMEBREW_GITHUB_API_TOKEN=github_pat_...
@@ -51,6 +55,18 @@ class Lore < Formula
       Override the location with LORE_DB:
         export LORE_DB="$HOME/lore.db"
     EOS
+    if OS.mac?
+      s += <<~EOS
+
+        Lore.app (desktop GUI) is installed at:
+          #{opt_prefix}/Lore.app
+        To run it and pin it to the Dock, symlink it into /Applications:
+          ln -sfn "#{opt_prefix}/Lore.app" /Applications/Lore.app
+        Launched from the Dock/Finder the app does not inherit your shell
+        environment, so LORE_DB from a shell rc won't apply there (default used).
+      EOS
+    end
+    s
   end
 
   test do
