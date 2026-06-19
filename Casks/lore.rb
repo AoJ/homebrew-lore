@@ -41,10 +41,10 @@ unless defined?(GitHubPrivateLoreDownloadStrategy)
 end
 
 cask "lore" do
-  version "1.0.7"
-  sha256 "bde020c33bac6c1196518b964f37dfc293ad1d7b53544f4e7ce7d5b6c9baacf0"
+  version "1.0.8"
+  sha256 "82c908d295c550950833b0ec8b6d4da67750eb911b04b6873902b3400ffb2996"
 
-  url "https://api.github.com/repos/AoJ/lore/releases/assets/451273525",
+  url "https://api.github.com/repos/AoJ/lore/releases/assets/452192776",
       using: GitHubPrivateLoreDownloadStrategy
   name "Lore"
   desc "Personal knowledge management desktop app"

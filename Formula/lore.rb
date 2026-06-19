@@ -9,7 +9,7 @@ require "download_strategy"
 class Lore < Formula
   desc "Personal knowledge management tool (headless: lore, lore-serve, lore-worker)"
   homepage "https://github.com/AoJ/lore"
-  version "1.0.7"
+  version "1.0.8"
   license "MIT"
 
   # Private release assets — Homebrew's built-in strategy authenticates with
@@ -19,7 +19,7 @@ class Lore < Formula
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-apple-darwin.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "a79e375bd10ce6ef486cb662add452f5383adb9a913b22da55f6fad887cf2247"
+      sha256 "67f516bef89abaf9be9247a94248af195991d2517e6d60b859d00ad94e37491e"
     end
   end
 
@@ -27,12 +27,12 @@ class Lore < Formula
     on_intel do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-x86_64-unknown-linux-gnu.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8328bd0d8922cdeea6c99d43883c8a19c293dd815d92be32fe96c6998c5c1f87"
+      sha256 "cc1e4da23ff20c6d6081e12f3e20a689b7487c82969554130135de90ccf7fad7"
     end
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-unknown-linux-gnu.tar.gz",
           using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "db9bf5533d3517a4a429605d33cd33b645feb0499a42f55f295066394adac984"
+      sha256 "3333a282a87a650765e3cb9b2bc0c894fe0d2a115a6a5234103d1cea6be7db11"
     end
   end
 
