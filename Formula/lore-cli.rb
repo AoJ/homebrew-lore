@@ -8,25 +8,25 @@
 class LoreCli < Formula
   desc "Personal knowledge management tool (headless: lore, lore-serve, lore-worker)"
   homepage "https://github.com/AoJ/lore"
-  version "1.0.8"
+  version "1.0.9"
   license "MIT"
 
   # Public repo → plain release-asset URLs, no token/strategy needed.
   on_macos do
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "67f516bef89abaf9be9247a94248af195991d2517e6d60b859d00ad94e37491e"
+      sha256 "cd41816074ace512cb64c6d7b01696099e957596f66491ceafed28b8e975034c"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "cc1e4da23ff20c6d6081e12f3e20a689b7487c82969554130135de90ccf7fad7"
+      sha256 "259a475d957082775b1ac858a5a26b78354902f083f4809cc5cf9508f97ed36a"
     end
     on_arm do
       url "https://github.com/AoJ/lore/releases/download/v#{version}/lore-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "3333a282a87a650765e3cb9b2bc0c894fe0d2a115a6a5234103d1cea6be7db11"
+      sha256 "773111d47e5fba41681154de2758f6b87ebb2a3d3deebb77e09797bb9aaea6a7"
     end
   end
 
