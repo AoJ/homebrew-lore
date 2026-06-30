@@ -6,8 +6,8 @@
 # in the tap — edit the template instead.
 
 cask "lore" do
-  version "1.0.9"
-  sha256 "87e15b1e5d239728d8057f95844dbb6826779459139ff3fc3b01591d5f3e4b91"
+  version "1.0.10"
+  sha256 "9e3378f27b72277834c322e7212566a8528d6e52626ad5d4c7adbe7fd79051ea"
 
   # Public repo → plain release-asset URL, no token/strategy needed.
   url "https://github.com/AoJ/lore/releases/download/v#{version}/Lore-v#{version}-aarch64-apple-darwin.zip"
